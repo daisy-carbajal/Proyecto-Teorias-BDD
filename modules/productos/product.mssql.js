@@ -18,6 +18,7 @@ class ProductMSSql {
     .input("PROD_COD", prod.PROD_COD)
     .input("PROD_NOMBRE", prod.PROD_NOMBRE)
     .input("PROD_GENERO", prod.PROD_GENERO)
+    .input("PROD_COSTO", prod.PROD_COSTO)
     .input("PROD_COLOR", prod.PROD_COLOR)
     .input("PROD_IDPRODTYPE", prod.PROD_IDPRODTYPE)
     .input("PROD_PRECIOVENTA", prod.PROD_PRECIOVENTA)
@@ -33,6 +34,7 @@ class ProductMSSql {
     .input("PROD_COD", prod.PROD_COD)
     .input("PROD_NOMBRE", prod.PROD_NOMBRE)
     .input("PROD_GENERO", prod.PROD_GENERO)
+    .input("PROD_COSTO", prod.PROD_COSTO)
     .input("PROD_COLOR", prod.PROD_COLOR)
     .input("PROD_IDPRODTYPE", prod.PROD_IDPRODTYPE)
     .input("PROD_PRECIOVENTA", prod.PROD_PRECIOVENTA)
@@ -42,11 +44,19 @@ class ProductMSSql {
     .execute("SP_UPDATE_PRODUCTOS");
     return res;
  }
- async disableProduct(id) {
+ async disableProduct(prod) {
+    const conn = await mssqlcon.getConnection();
+    const res = await conn.request()
+    .input("PROD_COD", prod.PROD_COD)
+    .input("PROD_ACTIVO", prod.PROD_ACTIVO)
+    .execute("SP_DESACTIVAR_PRODUCTO");
+    return res;
+ }
+ async deleteProduct(id) {
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
     .input("PROD_COD", id)
-    .execute("SP_DESACTIVAR_PRODUCTO");
+    .execute("SP_BORRAR_PRODUCTO");
     return res;
   }
 }
