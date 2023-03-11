@@ -1,5 +1,7 @@
 const productMssql = require("./product.mssql");
+
 class Product {
+
   async getAllProducts(req, res) {
     try {
       const output = await productMssql.getAllProducts();
@@ -8,6 +10,7 @@ class Product {
       console.log(error);
     }
   }
+
   async getOneProduct(req, res) {
     const id = req.params.id;
     try {
@@ -20,6 +23,7 @@ class Product {
       console.log(error);
     }
   }
+
   async addProduct(req, res) {
     try {
       const output = await productMssql.addProduct(req.body);
@@ -28,6 +32,7 @@ class Product {
       console.log(error);
     }
   }
+
   async updateProduct(req, res) {
     try {
       const output = await productMssql.updateProduct(req.body);
@@ -36,14 +41,16 @@ class Product {
       console.log(error);
     }
   }
+
   async disableProduct(req, res) {
     try {
-        const output = await productMssql.disableProduct(req.body);
-        res.send(output);
-      } catch (error) {
-        console.log(error);
-      }
+      const output = await productMssql.disableProduct(req.body);
+      res.send(output);
+    } catch (error) {
+      console.log(error);
+    }
   }
+
   /*async deleteProduct(req, res) {
     const id = req.params.id;
     try {
@@ -56,5 +63,7 @@ class Product {
       console.log(error);
     }
   }*/
+
 }
+
 module.exports = new Product();
