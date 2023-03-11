@@ -44,7 +44,7 @@ class Product {
         console.log(error);
       }
   }
-  async deleteProduct(req, res) {
+  /*async deleteProduct(req, res) {
     const id = req.params.id;
     try {
       if (!id) {
@@ -55,6 +55,6 @@ class Product {
     } catch (error) {
       console.log(error);
     }
-  }
+  }*/
 }
 module.exports = new Product();

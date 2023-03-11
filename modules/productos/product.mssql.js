@@ -52,12 +52,12 @@ class ProductMSSql {
     .execute("SP_DESACTIVAR_PRODUCTO");
     return res;
  }
- async deleteProduct(id) {
+ /*async deleteProduct(id) {
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
     .input("PROD_COD", id)
     .execute("SP_BORRAR_PRODUCTO");
     return res;
-  }
+  }*/
 }
 module.exports = new ProductMSSql();
