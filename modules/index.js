@@ -19,6 +19,9 @@ class Module {
     const CompraMaestroController = require("./compramaestro/compramaestro.controller");
     new CompraMaestroController(this.app);
 
+    const ClienteController = require("./clientes/cliente.controller");
+    new ClienteController(this.app);
+
     const AuthController = require("./authenticate/auth.controller");
     new AuthController(this.app);
   }
