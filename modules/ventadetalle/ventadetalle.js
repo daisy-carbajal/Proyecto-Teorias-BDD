@@ -2,14 +2,14 @@ const ventadetalleMssql = require("./ventadetalle.mssql");
 
 class VentaDetalle {
 
-  async getAllVentaDetalle(req, res) {
+  /*async getAllVentaDetalle(req, res) {
     try {
       const output = await ventadetalleMssql.getAllVentaDetalle();
       res.send(output);
     } catch (error) {
       console.log(error);
     }
-  }
+  }*/
 
   async getOneVentaDetalle(req, res) {
     const id = req.params.id;

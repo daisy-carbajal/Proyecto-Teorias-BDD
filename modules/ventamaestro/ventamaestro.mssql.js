@@ -4,7 +4,7 @@ class VentaMaestroMSSql {
 
    async getAllVentaMaestro() {
     const conn = await mssqlcon.getConnection();
-    const res = await conn.request().execute("");
+    const res = await conn.request().execute("SP_SELECT_VENTASMAESTRO");
     return res.recordset;
   }
 
@@ -12,7 +12,7 @@ class VentaMaestroMSSql {
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
     .input("VENT_COD", id)
-    .execute(" ");    
+    .execute("SP_FILTRAR_VENTASMAESTRO");    
     return res.recordset;
   }
 
@@ -22,7 +22,7 @@ class VentaMaestroMSSql {
     .input("VENT_COD", venta.VENT_COD)
     .input("VENT_CODCLIENTE", venta.VENT_CODCLIENTE)
     .input("VENT_FECHA", venta.VENT_FECHA)
-    .execute(" ");
+    .execute("SP_INSERT_VENTASMAESTRO");
     return res;
  }
 
@@ -32,7 +32,7 @@ class VentaMaestroMSSql {
     .input("VENT_COD", venta.VENT_COD)
     .input("VENT_CODCLIENTE", venta.VENT_CODCLIENTE)
     .input("VENT_FECHA", venta.VENT_FECHA)
-    .execute(" ");
+    .execute("SP_UPDATE_VENTASMAESTRO");
     return res;
  }
 
@@ -40,7 +40,7 @@ class VentaMaestroMSSql {
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
     .input("VENT_COD", id)
-    .execute(" ");
+    .execute("SP_DELETE_VENTASMAESTRO");
     return res;
   }
 

@@ -1,51 +1,51 @@
 const mssqlcon = require('../../dbconnection');
 
-class proveedorMSSql { 
+class ProveedorMSSql { 
 
-   async getAllproveedor() {
+   async getAllProveedor() {
     const conn = await mssqlcon.getConnection();
-    const res = await conn.request().execute("");
+    const res = await conn.request().execute("SP_SELECT_PROVEEDORES");
     return res.recordset;
   }
 
-  async getOneproveedor(id) {
+  async getOneProveedor(id) {
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
     .input("PROV_COD", id)
-    .execute(" ");    
+    .execute("SP_FILTRAR_PROVEEDORES");    
     return res.recordset;
   }
 
-  async addproveedor(proveedor) {
+  async addProveedor(proveedor) {
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
     .input("PROV_COD", proveedor.PROV_COD)
     .input("PROV_NOMBRE", proveedor.PROV_NOMBRE)
     .input("PROV_DIRECCION", proveedor.PROV_DIRECCION)
     .input("PROV_TELEFONO", proveedor.PROV_TELEFONO)
-    .execute(" ");
+    .execute("SP_INSERT_PROVEEDOR");
     return res;
  }
 
- async updateproveedor(proveedor) {
+ async updateProveedor(proveedor) {
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
     .input("PROV_COD", proveedor.PROV_COD)
     .input("PROV_NOMBRE", proveedor.PROV_NOMBRE)
     .input("PROV_DIRECCION", proveedor.PROV_DIRECCION)
     .input("PROV_TELEFONO", proveedor.PROV_TELEFONO)
-    .execute(" ");
+    .execute("SP_UPDATE_PROVEEDOR");
     return res;
  }
 
- async deleteproveedor(id) {
+ async deleteProveedor(id) {
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
     .input("PROV_COD", id)
-    .execute(" ");
+    .execute("SP_ELIMINAR_PROVEEDOR");
     return res;
   }
 
 }
 
-module.exports = new proveedorMSSql();
+module.exports = new ProveedorMSSql();

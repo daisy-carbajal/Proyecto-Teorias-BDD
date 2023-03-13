@@ -1,54 +1,54 @@
-const cliente = require("./cliente.mssql");
+const clienteMSSql = require("./cliente.mssql");
 
-class cliente {
+class Cliente {
 
-  async getAllcliente(req, res) {
+  async getAllCliente(req, res) {
     try {
-      const output = await clienteMSSql.getAllcliente();
+      const output = await clienteMSSql.getAllCliente();
       res.send(output);
     } catch (error) {
       console.log(error);
     }
   }
 
-  async getOnecliente(req, res) {
+  async getOneCliente(req, res) {
     const id = req.params.id;
     try {
       if (!id) {
         console.log("Cliente ID no existe.")
       }
-      const output = await clienteMSSql.getOnecliente(id);
+      const output = await clienteMSSql.getOneCliente(id);
       res.send(output);
     } catch (error) {
       console.log(error);
     }
   }
 
-  async addcliente(req, res) {
+  async addCliente(req, res) {
     try {
-      const output = await clienteMSSql.addcliente(req.body);
+      const output = await clienteMSSql.addCliente(req.body);
       res.send(output);
     } catch (error) {
       console.log(error);
     }
   }
 
-  async updatecliente(req, res) {
+  async updateCliente(req, res) {
     try {
-      const output = await clienteMSSql.updatecliente(req.body);
+      const output = await clienteMSSql.updateCliente(req.body);
       res.send(output);
     } catch (error) {
       console.log(error);
     }
   }
 
-  async deletecliente(req, res) {
+  async deleteCliente(req, res) {
     const id = req.params.id;
     try {
       if (!id) {
         console.log("Cliente ID no existe.")
       }
-      const output = await clienteMSSql.deletecliente(id);
+      const output = await clienteMSSql.deleteCliente(id);
       res.send(output);
     } catch (error) {
       console.log(error);
@@ -57,4 +57,4 @@ class cliente {
 
 }
 
-module.exports = new cliente();
+module.exports = new Cliente();

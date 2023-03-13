@@ -2,17 +2,17 @@ const mssqlcon = require('../../dbconnection');
 
 class VentaDetalleMSSql { 
 
-   async getAllVentaDetalle() {
+  /*async getAllVentaDetalle() {
     const conn = await mssqlcon.getConnection();
-    const res = await conn.request().execute("");
+    const res = await conn.request().execute("SP_SELECT_VENTADETALLE");
     return res.recordset;
-  }
+  }*/
 
   async getOneVentaDetalle(id) {
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
     .input("VENTDET_COD", id)
-    .execute(" ");    
+    .execute("SP_FILTRAR_VENTADETALLE");    
     return res.recordset;
   }
 
@@ -22,7 +22,7 @@ class VentaDetalleMSSql {
     .input("VENTDET_COD", ventad.VENTDET_COD)
     .input("VENTDET_CODPRO", ventad.VENTDET_CODPRO)
     .input("VENTDET_CANTIDAD", ventad.VENTDET_CANTIDAD)
-    .execute(" ");
+    .execute("SP_INSERT_VENTADETALLE");
     return res;
  }
 
@@ -32,17 +32,17 @@ class VentaDetalleMSSql {
     .input("VENTDET_COD", ventad.VENTDET_COD)
     .input("VENTDET_CODPRO", ventad.VENTDET_CODPRO)
     .input("VENTDET_CANTIDAD", ventad.VENTDET_CANTIDAD)
-    .execute(" ");
+    .execute("SP_UPDATE_VENTADETALLE");
     return res;
  }
 
- async deleteVentaDetalle(id) {
+ /*async deleteVentaDetalle(id) {
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
     .input("VENTDET_COD", id)
-    .execute(" ");
+    .execute("SP_EILIMNAR_VENTADETALLE");
     return res;
-  }
+  }*/
 
 }
 

@@ -2,17 +2,17 @@ const mssqlcon = require('../../dbconnection');
 
 class CompraDetalleMSSql { 
 
-   async getAllCompraDetalle() {
+  /*async getAllCompraDetalle() {
     const conn = await mssqlcon.getConnection();
-    const res = await conn.request().execute("");
+    const res = await conn.request().execute("SP_SELECT_COMPRADETALLE");
     return res.recordset;
-  }
+  }*/
 
   async getOneCompraDetalle(id) {
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
     .input("COMPDET_COD", id)
-    .execute(" ");    
+    .execute("SP_FILTRAR_COMPRADETALLE");    
     return res.recordset;
   }
 
@@ -22,7 +22,7 @@ class CompraDetalleMSSql {
     .input("COMPDET_COD", compra.COMPDET_COD)
     .input("COMPDET_CODPRO", compra.COMPDET_CODPRO)
     .input("COMPDET_CANTIDAD", compra.COMPDET_CANTIDAD)
-    .execute(" ");
+    .execute("SP_INSERT_COMPRADETALLE");
     return res;
  }
 
@@ -32,17 +32,17 @@ class CompraDetalleMSSql {
     .input("COMPDET_COD", compra.COMPDET_COD)
     .input("COMPDET_CODPRO", compra.COMPDET_CODPRO)
     .input("COMPDET_CANTIDAD", compra.COMPDET_CANTIDAD)
-    .execute(" ");
+    .execute("SP_UPDATE_COMPRADETALLE");
     return res;
  }
 
- async deleteCompraDetalle(id) {
+ /*async deleteCompraDetalle(id) {
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
     .input("COMPDET_COD", id)
-    .execute(" ");
+    .execute("SP_ELIMINAR_COMPRADETALLE");
     return res;
-  }
+  }*/
 
 }
 

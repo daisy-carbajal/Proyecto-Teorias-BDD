@@ -5,7 +5,7 @@ const router = express.Router();
 class VentaDetalleController {
 
     constructor(app) {
-        router.get('/', ventadetalle.getAllVentaDetalle);
+        /*router.get('/', ventadetalle.getAllVentaDetalle);*/
         router.get('/:id', ventadetalle.getOneVentaDetalle);
         router.post('/', ventadetalle.addVentaDetalle);
         router.delete('/:id', ventadetalle.deleteVentaDetalle);

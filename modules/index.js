@@ -22,8 +22,11 @@ class Module {
     const ClienteController = require("./clientes/cliente.controller");
     new ClienteController(this.app);
 
-    const AuthController = require("./authenticate/auth.controller");
-    new AuthController(this.app);
+    const ProveedorController = require("./proveedor/proveedor.controller");
+    new ProveedorController(this.app);
+
+    /*const AuthController = require("./authenticate/auth.controller");
+    new AuthController(this.app);*/
   }
 }
 

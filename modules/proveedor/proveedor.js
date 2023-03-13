@@ -1,54 +1,54 @@
-const proveedor = require("./proveedor.mssql");
+const proveedorMSSql = require("./proveedor.mssql");
 
-class proveedor {
+class Proveedor {
 
-  async getAllproveedor(req, res) {
+  async getAllProveedor(req, res) {
     try {
-      const output = await proveedorMSSql.getAllproveedor();
+      const output = await proveedorMSSql.getAllProveedor();
       res.send(output);
     } catch (error) {
       console.log(error);
     }
   }
 
-  async getOneproveedor(req, res) {
+  async getOneProveedor(req, res) {
     const id = req.params.id;
     try {
       if (!id) {
         console.log("Proveedor ID no existe.")
       }
-      const output = await proveedorMSSql.getOneproveedor(id);
+      const output = await proveedorMSSql.getOneProveedor(id);
       res.send(output);
     } catch (error) {
       console.log(error);
     }
   }
 
-  async addproveedor(req, res) {
+  async addProveedor(req, res) {
     try {
-      const output = await proveedorMSSql.addproveedor(req.body);
+      const output = await proveedorMSSql.addProveedor(req.body);
       res.send(output);
     } catch (error) {
       console.log(error);
     }
   }
 
-  async updateproveedor(req, res) {
+  async updateProveedor(req, res) {
     try {
-      const output = await proveedorMSSql.updateproveedor(req.body);
+      const output = await proveedorMSSql.updateProveedor(req.body);
       res.send(output);
     } catch (error) {
       console.log(error);
     }
   }
 
-  async deleteproveedor(req, res) {
+  async deleteProveedor(req, res) {
     const id = req.params.id;
     try {
       if (!id) {
         console.log("Proveedor ID no existe.")
       }
-      const output = await proveedorMSSql.deleteproveedor(id);
+      const output = await proveedorMSSql.deleteProveedor(id);
       res.send(output);
     } catch (error) {
       console.log(error);
@@ -57,4 +57,4 @@ class proveedor {
 
 }
 
-module.exports = new proveedor();
+module.exports = new Proveedor();

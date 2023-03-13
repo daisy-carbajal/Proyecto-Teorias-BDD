@@ -2,17 +2,17 @@ const cliente = require('./cliente');
 const express = require('express');
 const router = express.Router();
 
-class clienteController{
+class ClienteController{
 
     constructor(app) {
-        router.get('/', cliente.getAllcliente);
-        router.get('/:id', cliente.getOnecliente);
-        router.post('/', cliente.addcliente);
-        router.delete('/:id', cliente.deletecliente);
-        router.put('/', cliente.updatecliente);
+        router.get('/', cliente.getAllCliente);
+        router.get('/:id', cliente.getOneCliente);
+        router.post('/', cliente.addCliente);
+        router.delete('/:id', cliente.deleteCliente);
+        router.put('/', cliente.updateCliente);
         app.use('/api/v1/cliente', router);
     }
 
 }
 
-module.exports = clienteController;
+module.exports = ClienteController;

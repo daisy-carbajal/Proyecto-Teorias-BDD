@@ -2,14 +2,14 @@ const compradetalleMSSql = require("./compradetalle.mssql");
 
 class CompraDetalle {
 
-  async getAllCompraDetalle(req, res) {
+  /*async getAllCompraDetalle(req, res) {
     try {
       const output = await compradetalleMSSql.getAllCompraDetalle();
       res.send(output);
     } catch (error) {
       console.log(error);
     }
-  }
+  }*/
 
   async getOneCompraDetalle(req, res) {
     const id = req.params.id;
@@ -42,7 +42,7 @@ class CompraDetalle {
     }
   }
 
-  async deleteCompraDetalle(req, res) {
+  /*async deleteCompraDetalle(req, res) {
     const id = req.params.id;
     try {
       if (!id) {
@@ -53,7 +53,7 @@ class CompraDetalle {
     } catch (error) {
       console.log(error);
     }
-  }
+  }*/
 
 }
 

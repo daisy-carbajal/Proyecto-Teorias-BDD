@@ -1,51 +1,50 @@
 const mssqlcon = require('../../dbconnection');
 
-class clienteMSSql { 
+class ClienteMSSql { 
 
-   async getAllcliente() {
+   async getAllCliente() {
     const conn = await mssqlcon.getConnection();
-    const res = await conn.request().execute("");
+    const res = await conn.request().execute("SP_SELECT_CLIENTES");
     return res.recordset;
   }
 
-  async getOnecliente(id) {
+  async getOneCliente(id) {
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
     .input("CLIE_COD", id)
-    .execute(" ");    
+    .execute("SP_FILTRAR_CLIENTES");    
     return res.recordset;
   }
 
-  async addcliente(cliente) {
+  async addCliente(cliente) {
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
     .input("CLIE_COD", cliente.CLIE_COD)
     .input("CLIE_NOMBRE", cliente.CLIE_NOMBRE)
     .input("CLIE_TELEFONO", cliente.CLIE_TELEFONO)
     .input("CLIE_FECHANACIMIENTO", cliente.CLIE_FECHANACIMIENTO)
-    .execute(" ");
+    .execute("SP_INSERT_CLIENTES");
     return res;
  }
 
- async updatecliente(cliente) {
+ async updateCliente(cliente) {
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
     .input("CLIE_COD", cliente.CLIE_COD)
     .input("CLIE_NOMBRE", cliente.CLIE_NOMBRE)
     .input("CLIE_TELEFONO", cliente.CLIE_TELEFONO)
     .input("CLIE_FECHANACIMIENTO", cliente.CLIE_FECHANACIMIENTO)
-    .execute(" ");
+    .execute("SP_UPDATE_CLIENTES");
     return res;
  }
-
- async deletecliente(id) {
+  async deleteCliente(id) {
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
     .input("CLIE_COD", id)
-    .execute(" ");
+    .execute("SP_DELETE_CLIENTES");
     return res;
   }
 
 }
 
-module.exports = new clienteMSSql();
+module.exports = new ClienteMSSql();

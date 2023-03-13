@@ -1,18 +1,18 @@
-const proveeedor = require('./proveeedor');
+const proveedor = require('./proveedor');
 const express = require('express');
 const router = express.Router();
 
-class proveeedorController{
+class ProveedorController{
 
     constructor(app) {
-        router.get('/', proveeedor.getAllproveeedor);
-        router.get('/:id', proveeedor.getOneproveeedor);
-        router.post('/', proveeedor.addproveeedor);
-        router.delete('/:id', proveeedor.deleteproveeedor);
-        router.put('/', proveeedor.updateproveeedor);
-        app.use('/api/v1/proveeedor', router);
+        router.get('/', proveedor.getAllProveedor);
+        router.get('/:id', proveedor.getOneProveedor);
+        router.post('/', proveedor.addProveedor);
+        router.delete('/:id', proveedor.deleteProveedor);
+        router.put('/', proveedor.updateProveedor);
+        app.use('/api/v1/proveedor', router);
     }
 
 }
 
-module.exports = proveeedorController;
+module.exports = ProveedorController;

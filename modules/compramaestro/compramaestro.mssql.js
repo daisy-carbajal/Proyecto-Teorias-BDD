@@ -4,7 +4,7 @@ class CompraMaestroMSSql {
 
    async getAllCompraMaestro() {
     const conn = await mssqlcon.getConnection();
-    const res = await conn.request().execute("");
+    const res = await conn.request().execute("SP_SELECT_COMPRAMAESTRO");
     return res.recordset;
   }
 
@@ -12,7 +12,7 @@ class CompraMaestroMSSql {
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
     .input("COMP_COD", id)
-    .execute(" ");    
+    .execute("SP_FILTRAR_COMPRAMAESTRO");    
     return res.recordset;
   }
 
@@ -22,7 +22,7 @@ class CompraMaestroMSSql {
     .input("COMP_COD", compra.COMP_COD)
     .input("COMP_FECHA", compra.COMP_FECHA)
     .input("COMP_CODPROVEEDOR", compra.COMP_CODPROVEEDOR)
-    .execute(" ");
+    .execute("SP_INSERT_COMPRAMAESTRO");
     return res;
  }
 
@@ -32,7 +32,7 @@ class CompraMaestroMSSql {
     .input("COMP_COD", compra.COMP_COD)
     .input("COMP_FECHA", compra.COMP_FECHA)
     .input("COMP_CODPROVEEDOR", compra.COMP_CODPROVEEDOR)
-    .execute(" ");
+    .execute("SP_UPDATE_COMPRAMAESTRO");
     return res;
  }
 
@@ -40,7 +40,7 @@ class CompraMaestroMSSql {
     const conn = await mssqlcon.getConnection();
     const res = await conn.request()
     .input("COMP_COD", id)
-    .execute(" ");
+    .execute("SP_ELIMINAR_COMPRAMAESTRO");
     return res;
   }
 

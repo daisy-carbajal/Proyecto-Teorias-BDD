@@ -5,7 +5,7 @@ class DBConnection {
        return await mssql.connect({
               user: 'sa',
               password: '1234',
-              server: 'localhost',
+              server: 'DAISY-CARBAJAL',
               database: 'mywarehousehn',
               port: 1433,
               trustServerCertificate: true
